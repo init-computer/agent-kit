@@ -1,0 +1,4 @@
+[mcp_servers.init]
+command = "npx"
+args = ["-y", "@init-computer/mcp"]
+env = { INIT_API_KEY = "init_sk_..." }

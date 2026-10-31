@@ -1,0 +1,25 @@
+{
+  "name": "init-computer",
+  "owner": {
+    "name": "Init",
+    "url": "https://www.init.computer"
+  },
+  "metadata": {
+    "description": "Init plugins for Claude Code: type /backend to build and wire live backend APIs.",
+    "version": "0.1.0"
+  },
+  "plugins": [
+    {
+      "name": "init-computer",
+      "source": "./plugins/init-computer",
+      "description": "Type /backend to generate a live, typed backend API with Init and wire it into your app. Includes the Init MCP server and a backend skill.",
+      "version": "0.1.0",
+      "author": { "name": "Init", "url": "https://www.init.computer" },
+      "homepage": "https://www.init.computer/mcp",
+      "repository": "https://github.com/init-computer/agent-kit",
+      "license": "MIT",
+      "keywords": ["backend", "api", "mcp", "init"],
+      "category": "development"
+    }
+  ]
+}
