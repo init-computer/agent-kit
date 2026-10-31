@@ -49,6 +49,7 @@ Install config:
 | mcp.so | mcp.so → Submit | Manual |
 | PulseMCP | pulsemcp.com → Submit (also syncs from the official registry) | Manual |
 | MCP Market | mcpmarket.com → Submit | Manual |
+| Docker MCP Catalog | PR to `docker/mcp-registry`. Run `task create -- --category devops https://github.com/init-computer/init -e INIT_API_KEY=...` (needs Docker Desktop, Go and Task), then share a test key through their form | Manual: needs Docker |
 
 ## Cline submission
 
