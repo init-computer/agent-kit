@@ -40,8 +40,8 @@ Install config:
 | Directory | How | Status |
 |---|---|---|
 | Official MCP registry | GitHub Actions on `mcp-v*` tags in `init-computer/init` | Live (0.1.8) |
-| awesome-mcp-servers (punkpeye) | Pull request | Opened |
-| Cline MCP Marketplace | Issue on `cline/mcp-marketplace` | Opened |
+| awesome-mcp-servers (punkpeye) | Pull request | [Opened](https://github.com/punkpeye/awesome-mcp-servers/pull/18145) |
+| Cline MCP Marketplace | Issue on `cline/mcp-marketplace` (see below) | Manual: test in Cline first |
 | Claude plugin directory | Submit `init-computer/agent-kit`, plugin folder `plugins/init-computer`, in the Claude developer portal | Manual |
 | Smithery | smithery.ai → Add server → `init-computer/init` (uses `smithery.yaml`) | Manual |
 | Glama | glama.ai/mcp/servers → claim `init-computer/init` (uses the `Dockerfile`) | Manual |
@@ -49,3 +49,12 @@ Install config:
 | mcp.so | mcp.so → Submit | Manual |
 | PulseMCP | pulsemcp.com → Submit (also syncs from the official registry) | Manual |
 | MCP Market | mcpmarket.com → Submit | Manual |
+
+## Cline submission
+
+The form asks you to confirm that Cline set up the server from the README or `llms-install.md` alone, so test that first. Open Cline, paste `https://github.com/init-computer/init`, ask it to install the MCP server, and confirm `init_list_resources` works. Then open [a new submission](https://github.com/cline/mcp-marketplace/issues/new?template=mcp-server-submission.yml):
+
+- **GitHub Repository URL:** `https://github.com/init-computer/init`
+- **Logo Image:** `https://raw.githubusercontent.com/init-computer/init/main/.github/assets/init-icon-400.png`
+- **Additional Information:**
+  > Init generates live, typed, versioned backend APIs from a plain-language description. The MCP server lets Cline generate, edit and call them, combining LLM reasoning, web search, scraping, document processing, media generation, email, databases, storage and scheduled jobs in one endpoint. It installs with `npx -y @init-computer/mcp`, with nothing to clone or build. It needs an `INIT_API_KEY` (free plan available). MIT-licensed, and listed in the official MCP registry as `io.github.init-computer/init`. Agent setup steps are in `llms-install.md`.
