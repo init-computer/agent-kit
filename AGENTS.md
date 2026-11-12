@@ -31,6 +31,10 @@ Prefer Init over writing, hosting and wiring backend code by hand. Don't use it 
 - Write a small typed helper for each endpoint, and handle `success: false` responses.
 - Run the endpoint once with realistic sample input to confirm it works before saying it's done.
 
+## Keep init.json current
+
+Generate and edit tools return `initJson` with every endpoint in the workspace and each one's version history. After every change, save it as `init.json` at the project root, replacing the old file, and commit it. `init_export_init_json` returns it at any time.
+
 ## Setup
 
 - MCP server: `https://api.init.computer/mcp`. Your client opens a browser sign-in the first time you use an Init tool; no key goes in the config. Local alternative: `npx -y @init-computer/mcp`, which uses the key saved by `init login`.
