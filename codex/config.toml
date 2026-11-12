@@ -1,4 +1,3 @@
+# Then run: codex mcp login init
 [mcp_servers.init]
-command = "npx"
-args = ["-y", "@init-computer/mcp"]
-env = { INIT_API_KEY = "init_sk_..." }
+url = "https://api.init.computer/mcp"

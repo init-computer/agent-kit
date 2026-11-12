@@ -1,14 +1,8 @@
 {
   "mcpServers": {
     "init": {
-      "command": "npx",
-      "args": [
-        "-y",
-        "@init-computer/mcp"
-      ],
-      "env": {
-        "INIT_API_KEY": "${INIT_API_KEY}"
-      }
+      "type": "http",
+      "url": "https://api.init.computer/mcp"
     }
   }
 }

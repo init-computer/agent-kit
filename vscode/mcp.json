@@ -1,23 +1,8 @@
 {
-  "inputs": [
-    {
-      "type": "promptString",
-      "id": "init-api-key",
-      "description": "Init API key",
-      "password": true
-    }
-  ],
   "servers": {
     "init": {
-      "type": "stdio",
-      "command": "npx",
-      "args": [
-        "-y",
-        "@init-computer/mcp"
-      ],
-      "env": {
-        "INIT_API_KEY": "${input:init-api-key}"
-      }
+      "type": "http",
+      "url": "https://api.init.computer/mcp"
     }
   }
 }

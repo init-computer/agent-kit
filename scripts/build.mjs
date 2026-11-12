@@ -15,18 +15,19 @@ const description = "Init: backend APIs for this project. Use when the app needs
 const commandDescription = "Build or change a backend endpoint for this app with Init";
 const hint = "<what the backend should do> | run <url> {json} | list";
 
-const mcpServer = { command: "npx", args: ["-y", "@init-computer/mcp"], env: { INIT_API_KEY: "${INIT_API_KEY}" } };
+// Hosted MCP server: clients open a browser sign-in on first use, so no key goes in any config file.
+const MCP_URL = "https://api.init.computer/mcp";
 
 const files = {
 	// Claude Code plugin
 	"plugins/init-computer/commands/backend.md": `---\ndescription: ${commandDescription}\nargument-hint: ${hint}\n---\n\n${command("$ARGUMENTS")}\n`,
 	"plugins/init-computer/skills/init-backend/SKILL.md": `---\nname: init-backend\ndescription: ${description}\n---\n\n${guidance}\n\n${reference}\n`,
-	"plugins/init-computer/.mcp.json": JSON.stringify({ mcpServers: { init: mcpServer } }, null, 2) + "\n",
+	"plugins/init-computer/.mcp.json": JSON.stringify({ mcpServers: { init: { type: "http", url: MCP_URL } } }, null, 2) + "\n",
 
 	// Cursor
 	"cursor/rules/init.mdc": `---\ndescription: ${description}\nalwaysApply: false\n---\n\n${guidance}\n`,
 	"cursor/commands/backend.md": `${command("the text the user typed after /backend")}\n`,
-	"cursor/mcp.json": JSON.stringify({ mcpServers: { init: { ...mcpServer, env: { INIT_API_KEY: "${env:INIT_API_KEY}" } } } }, null, 2) + "\n",
+	"cursor/mcp.json": JSON.stringify({ mcpServers: { init: { url: MCP_URL } } }, null, 2) + "\n",
 
 	// Windsurf
 	"windsurf/rules/init.md": `---\ntrigger: model_decision\ndescription: ${description}\n---\n\n${guidance}\n`,
@@ -35,11 +36,11 @@ const files = {
 	// GitHub Copilot in VS Code
 	"copilot/copilot-instructions.md": `${guidance}\n`,
 	"copilot/prompts/backend.prompt.md": `---\nmode: agent\ndescription: ${commandDescription}\n---\n\n${command("${input:request:What should the backend do?}")}\n`,
-	"vscode/mcp.json": JSON.stringify({ inputs: [{ type: "promptString", id: "init-api-key", description: "Init API key", password: true }], servers: { init: { type: "stdio", command: "npx", args: ["-y", "@init-computer/mcp"], env: { INIT_API_KEY: "${input:init-api-key}" } } } }, null, 2) + "\n",
+	"vscode/mcp.json": JSON.stringify({ servers: { init: { type: "http", url: MCP_URL } } }, null, 2) + "\n",
 
 	// OpenAI Codex CLI
 	"codex/prompts/backend.md": `---\ndescription: ${commandDescription}\nargument-hint: ${hint}\n---\n\n${command("$ARGUMENTS")}\n`,
-	"codex/config.toml": `[mcp_servers.init]\ncommand = "npx"\nargs = ["-y", "@init-computer/mcp"]\nenv = { INIT_API_KEY = "init_sk_..." }\n`,
+	"codex/config.toml": `# Then run: codex mcp login init\n[mcp_servers.init]\nurl = "${MCP_URL}"\n`,
 
 	// Cline
 	"cline/.clinerules/init.md": `${guidance}\n`,
